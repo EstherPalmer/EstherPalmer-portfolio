@@ -2,4 +2,33 @@
 title: "Future Exercise"
 ---
 
-Placeholder file for a future exercise.
+```{r}
+library("dslabs")
+str(gapminder)
+summary(gapminder)
+data(gapminder)
+
+africadata <- subset(gapminder, (continent == "Africa"))
+#creates a new dataframe from a subset of the old one where the continent is Africa
+str(africadata)
+#Checks to make sure I have the correct number of observations
+
+inf_LE <- data.frame(africadata$infant_mortality, africadata$life_expectancy)
+#creates a new dataframe from these two columns of the africadata dataframe
+#this one is for infant mortality and Life expectancy
+str(inf_LE)
+#This checks to make sure I got it right
+
+pop_LE <- data.frame(africadata$population, africadata$life_expectancy)
+#This creates a new dataframe for population and life expectancy data
+str(pop_LE)
+#This checks that I have everything right
+
+plot(inf_LE)
+#plots this dataframe on a scatter plot
+#plot(pop_LE$africadata.population, pop_LE$africadata.life_expectancy, log = "x")
+#above is one option for generating the other scatter plot
+plot(pop_LE, log = "x")
+#here is a neater version
+#the log function is where you can specify which axis should be in log, in this case population
+
