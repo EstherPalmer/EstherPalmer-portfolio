@@ -31,4 +31,4 @@ plot(inf_LE)
 plot(pop_LE, log = "x")
 #here is a neater version
 #the log function is where you can specify which axis should be in log, in this case population
-
+```{r}
