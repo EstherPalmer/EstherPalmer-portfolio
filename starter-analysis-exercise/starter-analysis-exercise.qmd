@@ -48,3 +48,7 @@ year2000 <- subset(africadata, (year == "2000"))
 #this creates a new data.frame with all the data from the year 2000 from africadata
 str(year2000)
 #this is for checking
+
+plot(year2000$infant_mortality, year2000$life_expectancy)
+
+plot(year2000$population, year2000$life_expectancy, log = "x")
