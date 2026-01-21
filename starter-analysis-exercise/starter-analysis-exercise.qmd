@@ -53,3 +53,12 @@ plot(year2000$infant_mortality, year2000$life_expectancy)
 
 plot(year2000$population, year2000$life_expectancy, log = "x")
 ```
+These are the updated plots for the year 2000!
+
+```{r}
+fit1 <- lm(year2000$life_expectancy ~ year2000$infant_mortality)
+summary(fit1)
+fit2 <- lm(year2000$life_expectancy ~ year2000$population)
+summary(fit2)
+```
+I used the help command to figure out what I needed to input into the lm command. It said the format was response ~ predictor. It also looked like I could set several responses and predictors.

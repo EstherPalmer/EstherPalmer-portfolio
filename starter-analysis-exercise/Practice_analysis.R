@@ -59,3 +59,7 @@ str(missing)
 
 year2000 <- subset(africadata, (year == "2000"))
 str(year2000)
+
+fit1 <- lm(year2000$life_expectancy ~ year2000$infant_mortality)
+summary(fit1)
+
