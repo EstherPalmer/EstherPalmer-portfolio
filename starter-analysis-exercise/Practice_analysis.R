@@ -24,3 +24,8 @@ africadata <- subset(gapminder, (continent == "Africa"))
 str(africadata)
 #Checks to make sure I have the correct number of observations
 
+inf_LE <- data.frame(africadata$infant_mortality, africadata$life_expectancy)
+#creates a new dataframe from these two columns of the africadata dataframe
+#this one is for infant mortality and Life expectancy
+str(inf_LE)
+#This checks to make sure I got it right
