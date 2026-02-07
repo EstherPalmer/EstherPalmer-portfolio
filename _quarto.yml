@@ -15,7 +15,7 @@ website:
           - text: "READY Analysis Exercise"
             file: ready-exercise/report.html
           - text: "Complex Data Exercise"
-            file: data-exercise/data-exercise.html
+            file: data-exercise/data-exercise.qmd
     right:
       - icon: github 
         href: https://github.com/EstherPalmer/EstherPalmer-portfolio        
