@@ -4,11 +4,10 @@ title: "Complex Data analysis"
 
 I ran a Jaccard analysis on a set of Data of mine looking at _Salmonella_ populations at 3 creek sites. I went sampling after it had been dry for 3 days, and also after rain. I want to know if the populations differ signifigantly between the wet/dry samplings. A Jaccard analysis measures beta diversity and compares every sample to every other sample producing essentially, a triangular matrix. I have been procrastinating on figureing out how to analyze and present this data for several months, so we're doing it now. 
 Based on some readings I have done, the typical test for something like this is a PERMANOVA.
-My current plan: load my matrix, load a vector of dry samples and a vector of wet samples, then figure out how to use these vectors and the matrix for the PERMANOVA and then plot whatever the output is. I hope this counts as complex data.
+My current plan: load my matrix, load a thing denotating which samples are dry/wet, then figure out how to use these vectors and the matrix for the PERMANOVA. I hope this counts as complex data.
 
 Load Libraries
 ```{r}
-library(ggplot2) #for making plots
 library(dplyr) #for data processing/cleaning
 library(tidyr) #for data processing/cleaning
 library(here) #to set paths
@@ -25,7 +24,6 @@ jmatrix <- read.csv(data_location, row.names = 1)
 This cell loads the output of my Jaccard analysis
 Note: I still need to redo the Jaccard with the last of my CSS files, so this is not final data.
 
-
 Load Vectors
 ```{r}
 dry.wet_location <- here::here("data-exercise", "Samples_wet_dry.csv")
@@ -39,4 +37,4 @@ result <- adonis2(jmatrix ~ Wet.Dry, dry.wet, permutations = 999, method = "jacc
 #this should run the permanova test using the adonis2 formula in the vegan package
 print(result)
 ```
-I did something! I have no idea what the printed result fully means though
+I did something! I have no idea what the printed result fully means though. It looks like it might be signifigant? Theoretically this should compare all the wet samplings against all the dry samplings and see if there's significant differences between the two groups.
