@@ -1,0 +1,39 @@
+---
+title: "CDC Data analysis"
+---
+
+I downloaded data from the BEAM dashboard (found here: https://data.cdc.gov/Foodborne-Waterborne-and-Related-Diseases/BEAM-Dashboard-Serotypes-of-concern-Illnesses-and-/fvm6-ic5r/about_data)
+I specifically filtered for data from year_first_ill is > 2020 so there should be about 5 years of data.
+
+Now to lead in my packages:
+```{r}
+library(here) #to set paths
+library(dplyr) #for data processing/cleaning
+library(tidyr) #for data processing/cleaning
+library(skimr) #for nice visualization of data 
+```
+
+Now to load in my data:
+```{r}
+data_location <- here::here("cdcdata-exercise", "BEAM_Dashboard_Data.csv")
+BEAM <- read.csv(data_location)
+```
+
+Now to get a glimpse of my data:
+```{r}
+summary(BEAM)
+glimpse(BEAM)
+skim(BEAM)
+```
+There are 339 observations of 10 variables. Some of these variables probably shouldn't be characters like Year. Some of these categories also feel unnessesary, like table_id which looks like it just contains info from several other columns. Also Pathogen should be _Salmonella_ for all of this data, so it is unhelpful (and we can see there is only one observation). It does look like there's no missing data though. There are 36 unique serovars which is cool!
+
+Lets remove the useless variables
+```{r}
+d1 <- data.frame(BEAM$Food_category, BEAM$Year_first_ill, BEAM$Serotype, BEAM$No_of_illnesses, BEAM$No_of_outbreaks, BEAM$Year, BEAM$Year_range, BEAM$Running_total_by_year_range )
+skim(d1)
+```
+
+Lets turn the year into a numeric variable
+```{r}
+
+```
