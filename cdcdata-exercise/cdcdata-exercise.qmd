@@ -11,6 +11,8 @@ library(here) #to set paths
 library(dplyr) #for data processing/cleaning
 library(tidyr) #for data processing/cleaning
 library(skimr) #for nice visualization of data 
+library(eeptools) #I need to remove commas and this is the easiest way I found
+library(ggplot2) #plots!
 ```
 
 Now to load in my data:
@@ -32,8 +34,22 @@ Lets remove the useless variables
 d1 <- data.frame(BEAM$Food_category, BEAM$Year_first_ill, BEAM$Serotype, BEAM$No_of_illnesses, BEAM$No_of_outbreaks, BEAM$Year, BEAM$Year_range, BEAM$Running_total_by_year_range )
 skim(d1)
 ```
+#Note to future self: this renames the variables to BEAM.variable
 
 Lets turn the year into a numeric variable
 ```{r}
-
+d1$BEAM.Year <- decomma(d1$BEAM.Year)
+glimpse(d1$BEAM.Year)
+d1$BEAM.Year_first_ill <- decomma(d1$BEAM.Year_first_ill)
+glimpse(d1$BEAM.Year_first_ill)
 ```
+
+I want to make sure that these categorical variables are actually categories
+```{r}
+d1$BEAM.Serotype <- as.factor(d1$BEAM.Serotype)
+d1$BEAM.Food_category <- as.factor(d1$BEAM.Food_category)
+skim(d1)
+```
+
+This just leaves year range as something that should maybe be fixed. This one is tricky though, because each outbreak is going to have a separate year range. Also given how I filtered the data by year first ill this column may not be helpful.
+
