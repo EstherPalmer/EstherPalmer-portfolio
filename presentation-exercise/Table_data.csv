@@ -1,5 +1,4 @@
-,Vote_2020,Vote_2024,Percent_reoccuring_voters,Percent_did_not_vote,Percent_for_opponent
-Trump,29,32,85,11,4
-Biden/Harris,32,31,79,15,6
-Did not vote,38,36,73,73,27
-other,1,1,,,
+Candidate,Vote_2020,Vote_2024,Percent_reoccuring_voters,Percent_did_not_vote,Percent_for_opponent,Chart
+Trump,29,32,85,11,4,
+Biden/Harris,32,31,79,15,6,
+Did not vote,38,36,73,73,27,
