@@ -1,0 +1,50 @@
+---
+title: "Presentation Exercise"
+format: html
+---
+
+I got my graph from the pew research center https://www.pewresearch.org/short-reads/2025/12/15/our-favorite-data-visualizations-of-2025/sr_25-12-15_data-visualizations_1/
+It looks at voters in 2020 and 2024 and determines how many switched their votes.
+I picked it because my lab has previously used sankey plots to visualize some of our data and I've never made one before.
+There wasn't a CSV I could download that I saw for this, however the % are labeled on the graph. So I made a spreadsheet including 100 hypothetical voters and used the labeled % to fill it in.
+
+
+First I need to load packages
+```{r}
+library(here)
+library(dplyr)
+library(skimr)
+library(tidyr) #I think ggalluvial needs this
+library(ggplot2)
+library(ggalluvial) #for sankey plots, ggplot2 extension
+```
+
+Next I need to load my data
+```{r}
+data_location <- here::here("presentation-exercise", "2024_vote_data.csv")
+vd <- read.csv(data_location)
+```
+
+Now for a quick look at my data
+```{r}
+summary(vd)
+glimpse(vd)
+skim(vd)
+```
+Looks like my two variables each have 100 rows as they should although they got renamed weird with Xs. Nothing missing, 4 unique which is correct.
+
+Now lets see if I can make this plot!
+```{r}
+is_alluvia_form(vd)
+#This is a check
+
+ggplot(vd, aes(y = Freq, axis1 = Vote_2020, axis2 = Vote_2024)) + geom_alluvium(aes(fill = Vote_2020))
+
+```
+This is a good first plot! I want to see if I can add the blocks in and maybe the correct colors
+
+```{r}
+ggplot(vd, aes(y = Freq, axis1 = Vote_2020, axis2 = Vote_2024)) + geom_alluvium(aes(fill = Vote_2020)) + geom_stratum(width = 1/12) + geom_label(stat = "stratum", aes(label = after_stat(stratum))) + coord_flip()
+
+```
+I have managed to flip it on it's side!
