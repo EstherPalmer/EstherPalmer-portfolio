@@ -17,6 +17,7 @@ library(skimr)
 library(tidyr) #I think ggalluvial needs this
 library(ggplot2)
 library(ggalluvial) #for sankey plots, ggplot2 extension
+library(knitr)
 ```
 
 Next I need to load my data
@@ -58,7 +59,7 @@ ggplot(vd, aes(y = Freq, axis1 = Vote_2020, axis2 = Vote_2024)) +
     scale_x_continuous(breaks = 1:2, labels = c("2020 Vote", "2024 Vote")) 
     
 ```
-Wait these axis labels do not match the data
+These axis labels do not match the data
 
 ```{r}
 ggplot(vd, aes(y = Freq, axis1 = Vote_2024, axis2 = Vote_2020)) + 
@@ -79,8 +80,22 @@ ggplot(vd, aes(y = Freq, axis1 = Vote_2024, axis2 = Vote_2020)) +
     coord_flip() +
     ggtitle("The flow of voters and non-voters from 2020 to 2024")
 ```
-I figures out the colors, it just really hated when I put the variables in there for some reason
+I figured out the colors, it just really hated when I put the variables in there for some reason
 
 Here is the original graph:
 [Original Graph](OriginalGraph.png)
 
+Read in data in a useable form for not a sankey plot
+```{r}
+table_data_location <- here("presentation-exercise", "Table_data.csv")
+td <- read.csv(table_data_location)
+```
+
+Now to put it in table form
+```{r}
+rename_columns <- c("Candidate", "2020 Vote", "2024 Vote", "% reoccuring voters", "% did not vote", "% voted for opponent")
+kable(td, 
+    col.names = rename_columns, 
+    caption = "Percent of voters for each candidate in 2020/2024 and how many voted for the same candidate in 2024")
+
+```
