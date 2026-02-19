@@ -68,7 +68,19 @@ ggplot(vd, aes(y = Freq, axis1 = Vote_2024, axis2 = Vote_2020)) +
     coord_flip() +
     ggtitle("The flow of voters and non-voters from 2020 to 2024")
 ```
-So by removing the geom_stratum line I can keeo the data labels correct, which is fine, just further away from the original graph. I have solved the flipped y axis being weird by flipping the positions of all my variables.
+So by removing the geom_stratum line I can keep the data labels correct, which is fine, just maybe further away from the original graph. I have solved the flipped y axis being weird by flipping the positions of all my variables.
+
+```{r}
+ggplot(vd, aes(y = Freq, axis1 = Vote_2024, axis2 = Vote_2020)) + 
+    geom_alluvium(aes(fill = Vote_2020)) + 
+    geom_label(stat = "stratum", aes(label = after_stat(stratum))) +
+    scale_x_continuous(breaks = 1:2, labels = c("2024 Vote", "2020 Vote")) +
+    scale_fill_manual(values = c("#9AC0CD", "#e7e380ff", "#d9e2e2ff", "#fe4f1eff")) +
+    coord_flip() +
+    ggtitle("The flow of voters and non-voters from 2020 to 2024")
+```
+I figures out the colors, it just really hated when I put the variables in there for some reason
 
 Here is the original graph:
 [Original Graph](OriginalGraph.png)
+
