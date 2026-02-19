@@ -18,6 +18,7 @@ library(tidyr) #I think ggalluvial needs this
 library(ggplot2)
 library(ggalluvial) #for sankey plots, ggplot2 extension
 library(knitr)
+library(kableExtra)
 ```
 
 Next I need to load my data
@@ -91,11 +92,35 @@ table_data_location <- here("presentation-exercise", "Table_data.csv")
 td <- read.csv(table_data_location)
 ```
 
-Now to put it in table form
+So I can insert charts into my table, but first I need to make them
 ```{r}
-rename_columns <- c("Candidate", "2020 Vote", "2024 Vote", "% reoccuring voters", "% did not vote", "% voted for opponent")
-kable(td, 
-    col.names = rename_columns, 
-    caption = "Percent of voters for each candidate in 2020/2024 and how many voted for the same candidate in 2024")
+data_location2 <- here("presentation-exercise", "for_pie_chart.csv")
+pi <- read.csv(data_location2)
+
+Tpi <- ggplot(pi, aes(x = "", y = Trump, fill = Group)) + geom_bar(stat = "identity", width = 1) + coord_polar("y", start=0)
+print("Tpi")
+
+BHpi <- ggplot(pi, aes(x = "", y = Biden.Harris, fill = Group)) + geom_bar(stat = "identity", width = 1) + coord_polar("y", start=0)
+print("BHpi")
+
+DNVpi <- ggplot(pi, aes(x = "", y = Did.not.vote , fill = Group)) + geom_bar(stat = "identity", width = 1) + coord_polar("y", start=0)
+print("DNVpi")
+
+charts <- c("Trump_pie.png", "BHpie.png", "DNVPI.png")
 
 ```
+
+Now to put it in table form
+```{r}
+rename_columns <- c("Candidate", "2020 Vote", "2024 Vote", "% reoccuring voters", "% did not vote", "% voted for opponent", "Chart")
+kable(td, 
+    col.names = rename_columns, 
+    caption = "Percent of voters for each candidate in 2020/2024 and how many voted for the same candidate in 2024",
+    ) %>% 
+    column_spec(1, bold = TRUE) %>% 
+    kable_styling(latex_options = "striped") %>% 
+    kable_styling(fixed_thead = TRUE) %>%
+    column_spec(7, image = charts)
+```
+
+This is a short table but I made it so that the header scrolls with you because I always get annoyed when I have to scroll to the top with things.
