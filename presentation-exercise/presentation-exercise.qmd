@@ -31,7 +31,7 @@ summary(vd)
 glimpse(vd)
 skim(vd)
 ```
-Looks like my two variables each have 100 rows as they should although they got renamed weird with Xs. Nothing missing, 4 unique which is correct.
+My data looks correct
 
 Now lets see if I can make this plot!
 ```{r}
@@ -47,4 +47,25 @@ This is a good first plot! I want to see if I can add the blocks in and maybe th
 ggplot(vd, aes(y = Freq, axis1 = Vote_2020, axis2 = Vote_2024)) + geom_alluvium(aes(fill = Vote_2020)) + geom_stratum(width = 1/12) + geom_label(stat = "stratum", aes(label = after_stat(stratum))) + coord_flip()
 
 ```
-I have managed to flip it on it's side!
+I have managed to flip it on it's side! Although it's the wrong side. I have failed so far at colors.
+
+
+```{r}
+ggplot(vd, aes(y = Freq, axis1 = Vote_2020, axis2 = Vote_2024)) + 
+    geom_alluvium(aes(fill = Vote_2020), decreasing = FALSE) + 
+    geom_stratum(width = 1/12) + 
+    geom_label(stat = "stratum", aes(label = after_stat(stratum))) +
+    scale_x_continuous(breaks = 1:2, labels = c("2020 Vote", "2024 Vote")) 
+    
+```
+Wait these axis labels do not match the data
+
+```{r}
+ggplot(vd, aes(y = Freq, axis1 = Vote_2024, axis2 = Vote_2020)) + 
+    geom_alluvium(aes(fill = Vote_2020)) + 
+    geom_label(stat = "stratum", aes(label = after_stat(stratum))) +
+    scale_x_continuous(breaks = 1:2, labels = c("2024 Vote", "2020 Vote")) +
+    coord_flip() +
+    ggtitle("The flow of voters and non-voters from 2020 to 2024")
+```
+So by removing the geom_stratum line I can keeo the data labels correct, which is fine, just further away from the original graph. I have solved the flipped y axis being weird by flipping the positions of all my variables.
