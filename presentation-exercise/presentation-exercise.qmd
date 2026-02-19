@@ -69,3 +69,6 @@ ggplot(vd, aes(y = Freq, axis1 = Vote_2024, axis2 = Vote_2020)) +
     ggtitle("The flow of voters and non-voters from 2020 to 2024")
 ```
 So by removing the geom_stratum line I can keeo the data labels correct, which is fine, just further away from the original graph. I have solved the flipped y axis being weird by flipping the positions of all my variables.
+
+Here is the original graph:
+[Original Graph](OriginalGraph.png)
