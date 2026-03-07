@@ -100,10 +100,10 @@ fit a linear model to SEX using Dose, and one using all predictors, and calculat
 lm_mod3 <- logistic_reg()
 lm_fit3 <- lm_mod3 %>% fit(SEX ~ DOSE, data = df7)
 lm_fit3
-pred3 <- predict(lm_fit3, df7) %>% bind_cols(df7)
+pred3 <- predict(lm_fit3, df7, type = "prob") %>% bind_cols(df7)
 met3 <- metrics(pred3, truth = SEX, estimate = .pred_class)
 met3
-roc_auc(pred3, truth = SEX, .pred_1)
+roc_auc(pred3, truth = SEX, .pred_class)
 
 lm_mod4 <- logistic_reg()
 lm_fit4 <- lm_mod4 %>% fit(SEX ~ DOSE * Y * AGE * WT * HT * RACE, data = df7)
