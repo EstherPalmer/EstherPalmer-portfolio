@@ -39,6 +39,38 @@ Keep only variables Y, Dose, Age, Sex, Race, WT, HT. Convert Race and Sex to fac
 df7 <- select(df6,Y, DOSE, AGE, SEX, RACE, WT, HT)
 df7$SEX <- as.factor(df7$SEX)
 df7$RACE <- as.factor(df7$RACE)
+```
+
+Plots depicting:
+dose and Y colored by Age
+Y and weight colored by Sex
+boxplot of Y by sex
+boxplot of Y by race
+```{r}
 summary(df7)
+
+p2 <- ggplot(df7, aes(x=DOSE, y=Y, color=AGE)) + geom_point()
+plot(p2)
+
+p3 <- ggplot(df7, aes(x=WT, y=Y, color=SEX)) + geom_point()
+plot(p3)
+
+p4 <- ggplot(df7, aes(x=SEX, y=Y)) + geom_boxplot()
+plot(p4)
+
+p5 <- ggplot(df7, aes(x=RACE, y=Y)) + geom_boxplot()
+plot(p5)
+
+hisDOSE <- ggplot(df7, aes(x=DOSE)) + geom_histogram()
+plot(hisDOSE)
+
+hisAGE <- ggplot(df7, aes(x=AGE)) + geom_histogram()
+plot(hisAGE)
+
+hisWT <- ggplot(df7, aes(x=WT)) + geom_histogram()
+plot(hisWT)
+
+hisHT <- ggplot(df7, aes(x=HT)) + geom_histogram()
+plot(hisHT)
 ```
 
