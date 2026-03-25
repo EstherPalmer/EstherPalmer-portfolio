@@ -115,3 +115,50 @@ roc_auc(pred4, truth = SEX, .pred_1)
 ```
 
 The roc_auc is 1 for the last model which is super interesting. I guess that means that all the data put together are very good at predicting sex. This makes sense given that a lot of the things in the model are correlated with sex (height/weight, and doeses tend to be different for men/women). In model 3, dose alone had an ROC of .6, so it's probably a decent predictor of sex.
+
+random seed:
+```{r}
+rngseed = 1234
+```
+
+remove race as a variable
+```{r}
+df8 <- df7 %>% select(-RACE)
+```
+
+set seed and split data 75:25
+```{r}
+set.seed(rngseed)
+
+data_split  <- initial_split(df8, prop = 3/4)
+
+train <- training(data_split)
+test <- testing(data_split)
+```
+
+two linear models for Y (continuous outcome of interest)
+Model 1: dose as only pred
+Model 2: all predictors
+```{r}
+lm_mod5 <- linear_reg()
+lm_fit5 <- lm_mod5 %>% fit(Y ~ DOSE, data = train)
+lm_fit5
+pred5 <- predict(lm_fit5, train) %>% bind_cols(train)
+met5 <- metrics(pred5, truth = Y, estimate = .pred)
+met5
+
+lm_mod6 <- linear_reg()
+lm_fit6 <- lm_mod6 %>% fit(Y ~ DOSE * AGE * SEX * WT * HT, data = train)
+lm_fit6
+pred6 <- predict(lm_fit6, train) %>% bind_cols(train)
+met6 <- metrics(pred6, truth = Y, estimate = .pred)
+met6
+
+NM <- null_model(mode = "regression", engine = "parsnip")
+NM_fit <- NM %>% fit(Y ~., data = train)
+NM_fit
+pred7 <- predict(NM_fit, train) %>% bind_cols(train)
+met7 <- rmse(pred7, truth = Y, estimate = .pred)
+met7
+```
+
