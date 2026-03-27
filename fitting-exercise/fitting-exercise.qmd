@@ -215,3 +215,138 @@ Null model is now at 938, similar but slightly different
 second model is still at 2003
 First model is now at 684.
 Similar, but slightly different to the other random seed.
+
+# This section added by Rebecca Basta
+
+# Null Model Predictions
+```{r}
+plot_null <- predict(NM_fit, train) %>%
+  bind_cols(train %>% select(Y)) %>%
+  mutate(model = "Null model")
+```
+
+# Dose Model Predictions
+```{r}
+plot_mod1 <- predict(lm_fit5, train) %>%
+  bind_cols(train %>% select(Y)) %>%
+  mutate(model = "Dose only")
+```
+
+# All Predictor Model Predictions
+```{r}
+plot_mod2 <- predict(lm_fit6, train) %>%
+  bind_cols(train %>% select(Y)) %>%
+  mutate(model = "All predictors")
+```
+
+# Combine into One Dataframe
+```{r}
+plot_df <- bind_rows(plot_null, plot_mod1, plot_mod2)
+```
+
+# Predicted vs Observed Plot
+```{r}
+p_pred_obs <- ggplot(plot_df, aes(x = Y, y = .pred, color = model, shape = model)) +
+  geom_point(alpha = 0.7, size = 2) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
+  coord_cartesian(xlim = c(0, 5000), ylim = c(0, 5000)) +
+  labs(
+    x = "Observed values",
+    y = "Predicted values",
+    title = "Predicted vs observed values for 3 training-set models"
+  ) +
+  theme_minimal()
+
+plot(p_pred_obs)
+```
+
+
+The model that uses dosee as the only predictor, the predicted values fall along three horizontal lines becuase thedose cariable takes three values. 
+
+#  Plot with Model Using All Predictors 
+```{r}
+resid_df <- predict(lm_fit6, train) %>%
+  bind_cols(train %>% select(Y)) %>%
+  mutate(residual = .pred - Y)
+
+p_resid <- ggplot(resid_df, aes(x = .pred, y = residual)) +
+  geom_point(alpha = 0.7) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  coord_cartesian(ylim = c(-2000, 2000)) +
+  labs(
+    x = "Predicted values",
+    y = "Residuals (predicted - observed)",
+    title = "Predicted values vs residuals for model 2"
+  ) +
+  theme_minimal()
+
+plot(p_resid)
+```
+
+# Model Predictions and Uncertainty 
+```{r}
+library(rsample)
+set.seed(rngseed)
+
+# Create 100 bootstrap resamples
+dat_bs <- bootstraps(train, times = 100)
+```
+
+```{r}
+# Store predictions
+n <- nrow(train)
+B <- 100
+pred_bs <- matrix(NA, nrow = B, ncol = n)
+
+# Loop through bootstrap samples
+for (i in 1:B) {
+  
+  dat_sample <- rsample::analysis(dat_bs$splits[[i]])
+  
+# fit model on bootstrap sample
+  fit_bs <- lm(Y ~ DOSE * AGE * SEX * WT * HT, data = dat_sample)
+  
+# predict on original training data
+  pred_bs[i, ] <- predict(fit_bs, newdata = train)
+}
+```
+
+# 4. Compute Median and 89% Confidence Intervals 
+```{r}
+preds <- pred_bs |> apply(2, quantile, c(0.055, 0.5, 0.945)) |> t()
+
+# Original predictions
+orig_pred <- predict(lm_fit6, train)
+
+# Put in dataframe
+boot_df <- data.frame(
+  observed = train$Y,
+  pred_mean = orig_pred,
+  pred_lower = preds[,1],
+  pred_median = preds[,2],
+  pred_upper = preds[,3]
+)
+```
+
+# Plot Predicted vs Observed with Uncertainty
+```{r}
+ggplot() +
+  geom_point(data = boot_df, aes(x = observed, y = .pred), color = "black", alpha = 0.7) +
+  geom_point(data = boot_df, aes(x = observed, y = pred_median), color = "blue", alpha = 0.7) +
+  geom_errorbar(
+    data = boot_df,
+    aes(x = observed, ymin = pred_lower, ymax = pred_upper),
+    color = "red",
+    alpha = 0.5
+  ) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
+  coord_cartesian(xlim = c(0, 5000), ylim = c(0, 5000)) +
+  labs(
+    x = "Observed values",
+    y = "Predicted values",
+    title = "Bootstrap predictions with 89% confidence intervals"
+  ) +
+  theme_minimal()
+```
+
+The black points represent the original model predictions, and most of the points lie close to the 45° line, this indicates that there is not much variability between observed and predicted values. The blue points represent the median predictions from the bootstrap samples, they overlap with the original predictions. This overlap shows that the model is consistent across resampled datasets. The red vertical lines indicate the 89% confidence intervals, which are small for most individuals demonstrating low uncertainty, but are bigger for a few individuals. The pattern shows that the model represents most of trends in the data, and the bootstrap confirms the consistency and uncertainty of the predictions.

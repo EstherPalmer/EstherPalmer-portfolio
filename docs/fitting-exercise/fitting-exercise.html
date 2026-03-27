@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.8.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -72,10 +72,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-812b6faf5bfc829b3e56fdeeaa55c95f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-a2769fd479d34aea2cfabf4ab1c246b2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -205,7 +205,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at C:/Users/esthe/Documents/GitHub/EstherPalmer-portfolio</code></pre>
+<pre><code>here() starts at /Users/rebeccabasta/Desktop/EstherPalmer-portfolio</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
@@ -228,12 +228,12 @@ Attaching package: 'dplyr'</code></pre>
 <pre><code>── Attaching packages ────────────────────────────────────── tidymodels 1.4.1 ──</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>✔ broom        1.0.10     ✔ rsample      1.3.2 
+<pre><code>✔ broom        1.0.12     ✔ rsample      1.3.2 
 ✔ dials        1.4.2      ✔ tailor       0.1.0 
-✔ infer        1.1.0      ✔ tidyr        1.3.1 
+✔ infer        1.1.0      ✔ tidyr        1.3.2 
 ✔ modeldata    1.5.1      ✔ tune         2.0.1 
 ✔ parsnip      1.4.1      ✔ workflows    1.3.0 
-✔ purrr        1.1.0      ✔ workflowsets 1.1.1 
+✔ purrr        1.2.1      ✔ workflowsets 1.1.1 
 ✔ recipes      1.3.1      ✔ yardstick    1.3.2 </code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
@@ -616,95 +616,95 @@ Call:  stats::glm(formula = SEX ~ DOSE * Y * AGE * WT * HT * RACE, family = stat
 
 Coefficients:
             (Intercept)                     DOSE                        Y  
-             -2.542e+05                4.403e+03                1.393e+02  
+             -1.198e+05                1.894e+03                5.403e+01  
                     AGE                       WT                       HT  
-              4.504e+03                2.975e+03                1.399e+05  
+              1.233e+03                1.353e+03                6.285e+04  
                   RACE2                    RACE7                   RACE88  
-             -3.143e+05                1.896e+02                2.232e+03  
+              1.321e+12                1.924e+02                2.296e+03  
                  DOSE:Y                 DOSE:AGE                    Y:AGE  
-             -2.665e+00               -7.289e+01               -2.498e+00  
+             -1.009e+00               -1.037e+01               -4.375e-01  
                 DOSE:WT                     Y:WT                   AGE:WT  
-             -5.263e+01               -1.629e+00               -5.194e+01  
+             -2.176e+01               -6.039e-01               -1.290e+01  
                 DOSE:HT                     Y:HT                   AGE:HT  
-             -2.440e+03               -7.638e+01               -2.446e+03  
+             -9.928e+02               -2.722e+01               -5.610e+02  
                   WT:HT               DOSE:RACE2               DOSE:RACE7  
-             -1.636e+03                1.232e+04               -6.901e+00  
+             -7.069e+02               -5.282e+10               -6.955e+00  
             DOSE:RACE88                  Y:RACE2                  Y:RACE7  
-             -3.023e+00                4.780e+01                       NA  
+             -1.732e+00               -2.175e+08                       NA  
                Y:RACE88                AGE:RACE2                AGE:RACE7  
-             -1.090e+00                2.865e+03                       NA  
+             -1.002e+00                1.362e+10                       NA  
              AGE:RACE88                 WT:RACE2                 WT:RACE7  
-              9.810e+00                3.732e+03                       NA  
+              1.252e+01               -1.419e+10                       NA  
               WT:RACE88                 HT:RACE2                 HT:RACE7  
-             -1.189e+01                1.759e+05                       NA  
+             -1.227e+01               -6.982e+11                       NA  
               HT:RACE88               DOSE:Y:AGE                DOSE:Y:WT  
-              6.660e+00                4.723e-02                3.136e-02  
+             -1.498e+02                6.794e-03                1.131e-02  
             DOSE:AGE:WT                 Y:AGE:WT                DOSE:Y:HT  
-              8.646e-01                2.909e-02                1.466e+00  
+              1.070e-01                4.634e-03                5.088e-01  
             DOSE:AGE:HT                 Y:AGE:HT               DOSE:WT:HT  
-              3.993e+01                1.347e+00                2.910e+01  
+              3.645e+00                1.505e-01                1.135e+01  
                 Y:WT:HT                AGE:WT:HT             DOSE:Y:RACE2  
-              8.932e-01                2.819e+01               -2.156e+00  
+              3.023e-01                5.704e+00                8.699e+06  
            DOSE:Y:RACE7            DOSE:Y:RACE88           DOSE:AGE:RACE2  
-                     NA                1.733e-02               -1.321e+01  
+                     NA                1.623e-02               -5.449e+08  
          DOSE:AGE:RACE7          DOSE:AGE:RACE88              Y:AGE:RACE2  
-                     NA               -5.408e-01               -8.164e-01  
+                     NA               -5.302e-01               -6.826e+06  
             Y:AGE:RACE7             Y:AGE:RACE88            DOSE:WT:RACE2  
-                     NA                       NA               -1.358e+02  
+                     NA                       NA                5.678e+08  
           DOSE:WT:RACE7           DOSE:WT:RACE88               Y:WT:RACE2  
-                     NA                       NA               -8.092e-01  
+                     NA                       NA                2.536e+06  
              Y:WT:RACE7              Y:WT:RACE88             AGE:WT:RACE2  
-                     NA                       NA               -2.974e+01  
+                     NA                       NA               -2.310e+08  
            AGE:WT:RACE7            AGE:WT:RACE88            DOSE:HT:RACE2  
-                     NA                       NA               -6.744e+03  
+                     NA                       NA                2.793e+10  
           DOSE:HT:RACE7           DOSE:HT:RACE88               Y:HT:RACE2  
-                     NA                       NA               -2.856e+01  
+                     NA                       NA                1.127e+08  
              Y:HT:RACE7              Y:HT:RACE88             AGE:HT:RACE2  
-                     NA                       NA               -1.582e+03  
+                     NA                       NA               -8.945e+09  
            AGE:HT:RACE7            AGE:HT:RACE88              WT:HT:RACE2  
-                     NA                       NA               -2.105e+03  
+                     NA                       NA                7.528e+09  
             WT:HT:RACE7             WT:HT:RACE88            DOSE:Y:AGE:WT  
-                     NA                       NA               -5.544e-04  
+                     NA                       NA               -7.177e-05  
           DOSE:Y:AGE:HT             DOSE:Y:WT:HT           DOSE:AGE:WT:HT  
-             -2.560e-02               -1.725e-02               -4.725e-01  
+             -2.030e-03               -5.662e-03               -3.393e-02  
             Y:AGE:WT:HT         DOSE:Y:AGE:RACE2         DOSE:Y:AGE:RACE7  
-             -1.570e-02               -4.927e-03                       NA  
+             -1.506e-03                2.731e+05                       NA  
       DOSE:Y:AGE:RACE88          DOSE:Y:WT:RACE2          DOSE:Y:WT:RACE7  
-                     NA                2.887e-02                       NA  
+                     NA               -1.014e+05                       NA  
        DOSE:Y:WT:RACE88        DOSE:AGE:WT:RACE2        DOSE:AGE:WT:RACE7  
-                     NA               -3.548e-01                       NA  
+                     NA                9.240e+06                       NA  
      DOSE:AGE:WT:RACE88           Y:AGE:WT:RACE2           Y:AGE:WT:RACE7  
-                     NA                1.611e-02                       NA  
+                     NA                8.958e+04                       NA  
         Y:AGE:WT:RACE88          DOSE:Y:HT:RACE2          DOSE:Y:HT:RACE7  
-                     NA                1.209e+00                       NA  
+                     NA               -4.507e+06                       NA  
        DOSE:Y:HT:RACE88        DOSE:AGE:HT:RACE2        DOSE:AGE:HT:RACE7  
-                     NA                1.901e+00                       NA  
+                     NA                3.578e+08                       NA  
      DOSE:AGE:HT:RACE88           Y:AGE:HT:RACE2           Y:AGE:HT:RACE7  
-                     NA                5.061e-01                       NA  
+                     NA                4.099e+06                       NA  
         Y:AGE:HT:RACE88         DOSE:WT:HT:RACE2         DOSE:WT:HT:RACE7  
-                     NA                7.479e+01                       NA  
+                     NA               -3.011e+08                       NA  
       DOSE:WT:HT:RACE88            Y:WT:HT:RACE2            Y:WT:HT:RACE7  
-                     NA                4.804e-01                       NA  
+                     NA               -1.335e+06                       NA  
          Y:WT:HT:RACE88          AGE:WT:HT:RACE2          AGE:WT:HT:RACE7  
-                     NA                1.689e+01                       NA  
+                     NA                1.427e+08                       NA  
        AGE:WT:HT:RACE88         DOSE:Y:AGE:WT:HT      DOSE:Y:AGE:WT:RACE2  
-                     NA                3.006e-04                8.557e-06  
+                     NA                1.959e-05               -3.583e+03  
     DOSE:Y:AGE:WT:RACE7     DOSE:Y:AGE:WT:RACE88      DOSE:Y:AGE:HT:RACE2  
-                     NA                       NA                2.854e-03  
+                     NA                       NA               -1.640e+05  
     DOSE:Y:AGE:HT:RACE7     DOSE:Y:AGE:HT:RACE88       DOSE:Y:WT:HT:RACE2  
-                     NA                       NA               -1.639e-02  
+                     NA                       NA                5.340e+04  
      DOSE:Y:WT:HT:RACE7      DOSE:Y:WT:HT:RACE88     DOSE:AGE:WT:HT:RACE2  
-                     NA                       NA                2.459e-01  
+                     NA                       NA               -5.709e+06  
    DOSE:AGE:WT:HT:RACE7    DOSE:AGE:WT:HT:RACE88        Y:AGE:WT:HT:RACE2  
-                     NA                       NA               -9.774e-03  
+                     NA                       NA               -5.273e+04  
       Y:AGE:WT:HT:RACE7       Y:AGE:WT:HT:RACE88   DOSE:Y:AGE:WT:HT:RACE2  
-                     NA                       NA                       NA  
+                     NA                       NA                2.109e+03  
  DOSE:Y:AGE:WT:HT:RACE7  DOSE:Y:AGE:WT:HT:RACE88  
                      NA                       NA  
 
-Degrees of Freedom: 119 Total (i.e. Null);  47 Residual
+Degrees of Freedom: 119 Total (i.e. Null);  46 Residual
 Null Deviance:      94.24 
-Residual Deviance: 2.864e-09    AIC: 146</code></pre>
+Residual Deviance: 3.271e-09    AIC: 148</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>pred4 <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_fit4, df7, <span class="at">type =</span> <span class="st">"prob"</span>) <span class="sc">%&gt;%</span> <span class="fu">bind_cols</span>(df7)</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">roc_auc</span>(pred4, <span class="at">truth =</span> SEX, .pred_1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -716,8 +716,454 @@ Residual Deviance: 2.864e-09    AIC: 146</code></pre>
 </div>
 </div>
 <p>The roc_auc is 1 for the last model which is super interesting. I guess that means that all the data put together are very good at predicting sex. This makes sense given that a lot of the things in the model are correlated with sex (height/weight, and doeses tend to be different for men/women). In model 3, dose alone had an ROC of .6, so it’s probably a decent predictor of sex.</p>
+<p>random seed:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>rngseed <span class="ot">=</span> <span class="dv">1234</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>remove race as a variable</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>df8 <span class="ot">&lt;-</span> df7 <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>RACE)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>set seed and split data 75:25</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(rngseed)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>data_split  <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(df8, <span class="at">prop =</span> <span class="dv">3</span><span class="sc">/</span><span class="dv">4</span>)</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> <span class="fu">training</span>(data_split)</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">testing</span>(data_split)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>two linear models for Y (continuous outcome of interest) Model 1: dose as only pred Model 2: all predictors</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(rngseed)</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>lm_mod5 <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>()</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>lm_fit5 <span class="ot">&lt;-</span> lm_mod5 <span class="sc">%&gt;%</span> <span class="fu">fit</span>(Y <span class="sc">~</span> DOSE, <span class="at">data =</span> train)</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>lm_fit5</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>parsnip model object
 
 
+Call:
+stats::lm(formula = Y ~ DOSE, data = data)
+
+Coefficients:
+(Intercept)         DOSE  
+     535.45        53.42  </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>pred5 <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_fit5, train) <span class="sc">%&gt;%</span> <span class="fu">bind_cols</span>(train)</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>met5 <span class="ot">&lt;-</span> <span class="fu">metrics</span>(pred5, <span class="at">truth =</span> Y, <span class="at">estimate =</span> .pred)</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>met5</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  .metric .estimator .estimate
+  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
+1 rmse    standard     703.   
+2 rsq     standard       0.451
+3 mae     standard     546.   </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>lm_mod6 <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>()</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>lm_fit6 <span class="ot">&lt;-</span> lm_mod6 <span class="sc">%&gt;%</span> <span class="fu">fit</span>(Y <span class="sc">~</span> DOSE <span class="sc">*</span> AGE <span class="sc">*</span> SEX <span class="sc">*</span> WT <span class="sc">*</span> HT, <span class="at">data =</span> train)</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>lm_fit6</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>parsnip model object
+
+
+Call:
+stats::lm(formula = Y ~ DOSE * AGE * SEX * WT * HT, data = data)
+
+Coefficients:
+        (Intercept)                 DOSE                  AGE  
+          9.525e+04           -3.070e+03           -1.108e+03  
+               SEX2                   WT                   HT  
+          1.079e+05           -1.723e+03           -5.049e+04  
+           DOSE:AGE            DOSE:SEX2             AGE:SEX2  
+          8.184e+01            1.198e+03           -5.065e+03  
+            DOSE:WT               AGE:WT              SEX2:WT  
+          5.299e+01            3.454e+01            7.704e+02  
+            DOSE:HT               AGE:HT              SEX2:HT  
+          1.735e+03            5.416e+02           -5.277e+04  
+              WT:HT        DOSE:AGE:SEX2          DOSE:AGE:WT  
+          9.390e+02            2.381e+01           -1.531e+00  
+       DOSE:SEX2:WT          AGE:SEX2:WT          DOSE:AGE:HT  
+          2.727e+01           -1.869e+01           -4.453e+01  
+       DOSE:SEX2:HT          AGE:SEX2:HT           DOSE:WT:HT  
+         -2.680e+03            3.534e+03           -2.963e+01  
+          AGE:WT:HT           SEX2:WT:HT     DOSE:AGE:SEX2:WT  
+         -1.861e+01           -3.898e+02                   NA  
+   DOSE:AGE:SEX2:HT       DOSE:AGE:WT:HT      DOSE:SEX2:WT:HT  
+                 NA            8.471e-01                   NA  
+     AGE:SEX2:WT:HT  DOSE:AGE:SEX2:WT:HT  
+                 NA                   NA  </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>pred6 <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_fit6, train) <span class="sc">%&gt;%</span> <span class="fu">bind_cols</span>(train)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in predict.lm(object = object$fit, newdata = new_data, type =
+"response", : prediction from rank-deficient fit; consider predict(.,
+rankdeficient="NA")</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>met6 <span class="ot">&lt;-</span> <span class="fu">metrics</span>(pred6, <span class="at">truth =</span> Y, <span class="at">estimate =</span> .pred)</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>met6</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  .metric .estimator .estimate
+  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
+1 rmse    standard     578.   
+2 rsq     standard       0.628
+3 mae     standard     415.   </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>NM <span class="ot">&lt;-</span> <span class="fu">null_model</span>(<span class="at">mode =</span> <span class="st">"regression"</span>, <span class="at">engine =</span> <span class="st">"parsnip"</span>)</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>NM_fit <span class="ot">&lt;-</span> NM <span class="sc">%&gt;%</span> <span class="fu">fit</span>(Y <span class="sc">~</span>., <span class="at">data =</span> train)</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>NM_fit</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>parsnip model object
+
+Null Classification Model
+Predicted Value: 2509.171 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>pred7 <span class="ot">&lt;-</span> <span class="fu">predict</span>(NM_fit, train) <span class="sc">%&gt;%</span> <span class="fu">bind_cols</span>(train)</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>met7 <span class="ot">&lt;-</span> <span class="fu">rmse</span>(pred7, <span class="at">truth =</span> Y, <span class="at">estimate =</span> .pred)</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>met7</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  .metric .estimator .estimate
+  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
+1 rmse    standard        948.</code></pre>
+</div>
+</div>
+<p>I set the random seed correctly, however my values are different from the ones we’re supposed to get. I got 948 for the null which is correct, 703 for model 1 (correct value 702), and 578 for model 2 (correct value 627). This does mean that model 2 is currently performing best as it has the lowest rmse</p>
+<p>Now I need to do a 10-fold CV</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>folds <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(train, <span class="at">v =</span> <span class="dv">10</span>)</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>folds</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#  10-fold cross-validation 
+# A tibble: 10 × 2
+   splits         id    
+   &lt;list&gt;         &lt;chr&gt; 
+ 1 &lt;split [81/9]&gt; Fold01
+ 2 &lt;split [81/9]&gt; Fold02
+ 3 &lt;split [81/9]&gt; Fold03
+ 4 &lt;split [81/9]&gt; Fold04
+ 5 &lt;split [81/9]&gt; Fold05
+ 6 &lt;split [81/9]&gt; Fold06
+ 7 &lt;split [81/9]&gt; Fold07
+ 8 &lt;split [81/9]&gt; Fold08
+ 9 &lt;split [81/9]&gt; Fold09
+10 &lt;split [81/9]&gt; Fold10</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>lm_wf1 <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> <span class="fu">add_model</span>(lm_mod5) <span class="sc">%&gt;%</span> <span class="fu">add_formula</span>(Y <span class="sc">~</span> DOSE)</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>lm_fit_cv1 <span class="ot">&lt;-</span> lm_wf1 <span class="sc">%&gt;%</span> <span class="fu">fit_resamples</span>(folds)</span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>lm_fit_cv1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Resampling results
+# 10-fold cross-validation 
+# A tibble: 10 × 4
+   splits         id     .metrics         .notes          
+   &lt;list&gt;         &lt;chr&gt;  &lt;list&gt;           &lt;list&gt;          
+ 1 &lt;split [81/9]&gt; Fold01 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 4]&gt;
+ 2 &lt;split [81/9]&gt; Fold02 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 4]&gt;
+ 3 &lt;split [81/9]&gt; Fold03 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 4]&gt;
+ 4 &lt;split [81/9]&gt; Fold04 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 4]&gt;
+ 5 &lt;split [81/9]&gt; Fold05 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 4]&gt;
+ 6 &lt;split [81/9]&gt; Fold06 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 4]&gt;
+ 7 &lt;split [81/9]&gt; Fold07 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 4]&gt;
+ 8 &lt;split [81/9]&gt; Fold08 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 4]&gt;
+ 9 &lt;split [81/9]&gt; Fold09 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 4]&gt;
+10 &lt;split [81/9]&gt; Fold10 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 4]&gt;</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">collect_metrics</span>(lm_fit_cv1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 6
+  .metric .estimator    mean     n std_err .config        
+  &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;          
+1 rmse    standard   691.       10 67.5    pre0_mod0_post0
+2 rsq     standard     0.512    10  0.0592 pre0_mod0_post0</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>lm_wf2 <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> <span class="fu">add_model</span>(lm_mod5) <span class="sc">%&gt;%</span> <span class="fu">add_formula</span>(Y <span class="sc">~</span> DOSE <span class="sc">*</span> AGE <span class="sc">*</span> SEX <span class="sc">*</span> WT <span class="sc">*</span> HT)</span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>lm_fit_cv2 <span class="ot">&lt;-</span> lm_wf2 <span class="sc">%&gt;%</span> <span class="fu">fit_resamples</span>(folds)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>→ A | warning: prediction from rank-deficient fit; consider predict(., rankdeficient="NA")</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>There were issues with some computations   A: x1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>There were issues with some computations   A: x10</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code></code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>lm_fit_cv2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Resampling results
+# 10-fold cross-validation 
+# A tibble: 10 × 4
+   splits         id     .metrics         .notes          
+   &lt;list&gt;         &lt;chr&gt;  &lt;list&gt;           &lt;list&gt;          
+ 1 &lt;split [81/9]&gt; Fold01 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+ 2 &lt;split [81/9]&gt; Fold02 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+ 3 &lt;split [81/9]&gt; Fold03 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+ 4 &lt;split [81/9]&gt; Fold04 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+ 5 &lt;split [81/9]&gt; Fold05 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+ 6 &lt;split [81/9]&gt; Fold06 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+ 7 &lt;split [81/9]&gt; Fold07 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+ 8 &lt;split [81/9]&gt; Fold08 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+ 9 &lt;split [81/9]&gt; Fold09 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+10 &lt;split [81/9]&gt; Fold10 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+
+There were issues with some computations:
+
+  - Warning(s) x10: prediction from rank-deficient fit; consider predict(., rankdefic...
+
+Run `show_notes(.Last.tune.result)` for more information.</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">collect_metrics</span>(lm_fit_cv2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 6
+  .metric .estimator     mean     n   std_err .config        
+  &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;          
+1 rmse    standard   7599.       10 5695.     pre0_mod0_post0
+2 rsq     standard      0.347    10    0.0807 pre0_mod0_post0</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>NM_wf <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> <span class="fu">add_model</span>(NM) <span class="sc">%&gt;%</span> <span class="fu">add_formula</span>(Y <span class="sc">~</span> .)</span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>NM_fit_cv <span class="ot">&lt;-</span> NM_wf <span class="sc">%&gt;%</span> <span class="fu">fit_resamples</span>(folds)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>→ A | warning: A correlation computation is required, but `estimate` is constant and has 0
+               standard deviation, resulting in a divide by 0 error. `NA` will be returned.</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>NM_fit_cv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Resampling results
+# 10-fold cross-validation 
+# A tibble: 10 × 4
+   splits         id     .metrics         .notes          
+   &lt;list&gt;         &lt;chr&gt;  &lt;list&gt;           &lt;list&gt;          
+ 1 &lt;split [81/9]&gt; Fold01 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+ 2 &lt;split [81/9]&gt; Fold02 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+ 3 &lt;split [81/9]&gt; Fold03 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+ 4 &lt;split [81/9]&gt; Fold04 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+ 5 &lt;split [81/9]&gt; Fold05 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+ 6 &lt;split [81/9]&gt; Fold06 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+ 7 &lt;split [81/9]&gt; Fold07 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+ 8 &lt;split [81/9]&gt; Fold08 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+ 9 &lt;split [81/9]&gt; Fold09 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+10 &lt;split [81/9]&gt; Fold10 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+
+There were issues with some computations:
+
+  - Warning(s) x10: A correlation computation is required, but `estimate` is constant...
+
+Run `show_notes(.Last.tune.result)` for more information.</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">collect_metrics</span>(NM_fit_cv)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 6
+  .metric .estimator  mean     n std_err .config        
+  &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;          
+1 rmse    standard    933.    10    76.7 pre0_mod0_post0
+2 rsq     standard    NaN      0    NA   pre0_mod0_post0</code></pre>
+</div>
+</div>
+<p>Well the rmse for the null model was similar but different at 943, SE at 66.2. RMSE for the second model with the full formula was much worse at 2003, while rmse for the Y~DOSE model was 687.</p>
+<p>Now I need a different random seed</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">347</span>)</span>
+<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>folds2 <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(train, <span class="at">v =</span> <span class="dv">10</span>)</span>
+<span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a>folds2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#  10-fold cross-validation 
+# A tibble: 10 × 2
+   splits         id    
+   &lt;list&gt;         &lt;chr&gt; 
+ 1 &lt;split [81/9]&gt; Fold01
+ 2 &lt;split [81/9]&gt; Fold02
+ 3 &lt;split [81/9]&gt; Fold03
+ 4 &lt;split [81/9]&gt; Fold04
+ 5 &lt;split [81/9]&gt; Fold05
+ 6 &lt;split [81/9]&gt; Fold06
+ 7 &lt;split [81/9]&gt; Fold07
+ 8 &lt;split [81/9]&gt; Fold08
+ 9 &lt;split [81/9]&gt; Fold09
+10 &lt;split [81/9]&gt; Fold10</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>lm_wf3 <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> <span class="fu">add_model</span>(lm_mod5) <span class="sc">%&gt;%</span> <span class="fu">add_formula</span>(Y <span class="sc">~</span> DOSE)</span>
+<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>lm_fit_cv3 <span class="ot">&lt;-</span> lm_wf3 <span class="sc">%&gt;%</span> <span class="fu">fit_resamples</span>(folds2)</span>
+<span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a>lm_fit_cv3</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Resampling results
+# 10-fold cross-validation 
+# A tibble: 10 × 4
+   splits         id     .metrics         .notes          
+   &lt;list&gt;         &lt;chr&gt;  &lt;list&gt;           &lt;list&gt;          
+ 1 &lt;split [81/9]&gt; Fold01 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 4]&gt;
+ 2 &lt;split [81/9]&gt; Fold02 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 4]&gt;
+ 3 &lt;split [81/9]&gt; Fold03 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 4]&gt;
+ 4 &lt;split [81/9]&gt; Fold04 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 4]&gt;
+ 5 &lt;split [81/9]&gt; Fold05 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 4]&gt;
+ 6 &lt;split [81/9]&gt; Fold06 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 4]&gt;
+ 7 &lt;split [81/9]&gt; Fold07 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 4]&gt;
+ 8 &lt;split [81/9]&gt; Fold08 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 4]&gt;
+ 9 &lt;split [81/9]&gt; Fold09 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 4]&gt;
+10 &lt;split [81/9]&gt; Fold10 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 4]&gt;</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">collect_metrics</span>(lm_fit_cv3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 6
+  .metric .estimator    mean     n std_err .config        
+  &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;          
+1 rmse    standard   684.       10 67.4    pre0_mod0_post0
+2 rsq     standard     0.504    10  0.0722 pre0_mod0_post0</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>lm_wf4 <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> <span class="fu">add_model</span>(lm_mod5) <span class="sc">%&gt;%</span> <span class="fu">add_formula</span>(Y <span class="sc">~</span> DOSE <span class="sc">*</span> AGE <span class="sc">*</span> SEX <span class="sc">*</span> WT <span class="sc">*</span> HT)</span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>lm_fit_cv4 <span class="ot">&lt;-</span> lm_wf4 <span class="sc">%&gt;%</span> <span class="fu">fit_resamples</span>(folds2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>→ A | warning: prediction from rank-deficient fit; consider predict(., rankdeficient="NA")</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>lm_fit_cv4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Resampling results
+# 10-fold cross-validation 
+# A tibble: 10 × 4
+   splits         id     .metrics         .notes          
+   &lt;list&gt;         &lt;chr&gt;  &lt;list&gt;           &lt;list&gt;          
+ 1 &lt;split [81/9]&gt; Fold01 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+ 2 &lt;split [81/9]&gt; Fold02 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+ 3 &lt;split [81/9]&gt; Fold03 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+ 4 &lt;split [81/9]&gt; Fold04 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+ 5 &lt;split [81/9]&gt; Fold05 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+ 6 &lt;split [81/9]&gt; Fold06 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+ 7 &lt;split [81/9]&gt; Fold07 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+ 8 &lt;split [81/9]&gt; Fold08 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+ 9 &lt;split [81/9]&gt; Fold09 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+10 &lt;split [81/9]&gt; Fold10 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+
+There were issues with some computations:
+
+  - Warning(s) x10: prediction from rank-deficient fit; consider predict(., rankdefic...
+
+Run `show_notes(.Last.tune.result)` for more information.</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">collect_metrics</span>(lm_fit_cv2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 6
+  .metric .estimator     mean     n   std_err .config        
+  &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;          
+1 rmse    standard   7599.       10 5695.     pre0_mod0_post0
+2 rsq     standard      0.347    10    0.0807 pre0_mod0_post0</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>NM_wf2 <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> <span class="fu">add_model</span>(NM) <span class="sc">%&gt;%</span> <span class="fu">add_formula</span>(Y <span class="sc">~</span> .)</span>
+<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a>NM_fit_cv2 <span class="ot">&lt;-</span> NM_wf2 <span class="sc">%&gt;%</span> <span class="fu">fit_resamples</span>(folds2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>→ A | warning: A correlation computation is required, but `estimate` is constant and has 0
+               standard deviation, resulting in a divide by 0 error. `NA` will be returned.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>There were issues with some computations   A: x1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>There were issues with some computations   A: x10</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code></code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>NM_fit_cv2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Resampling results
+# 10-fold cross-validation 
+# A tibble: 10 × 4
+   splits         id     .metrics         .notes          
+   &lt;list&gt;         &lt;chr&gt;  &lt;list&gt;           &lt;list&gt;          
+ 1 &lt;split [81/9]&gt; Fold01 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+ 2 &lt;split [81/9]&gt; Fold02 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+ 3 &lt;split [81/9]&gt; Fold03 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+ 4 &lt;split [81/9]&gt; Fold04 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+ 5 &lt;split [81/9]&gt; Fold05 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+ 6 &lt;split [81/9]&gt; Fold06 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+ 7 &lt;split [81/9]&gt; Fold07 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+ 8 &lt;split [81/9]&gt; Fold08 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+ 9 &lt;split [81/9]&gt; Fold09 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+10 &lt;split [81/9]&gt; Fold10 &lt;tibble [2 × 4]&gt; &lt;tibble [1 × 4]&gt;
+
+There were issues with some computations:
+
+  - Warning(s) x10: A correlation computation is required, but `estimate` is constant...
+
+Run `show_notes(.Last.tune.result)` for more information.</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">collect_metrics</span>(NM_fit_cv2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 6
+  .metric .estimator  mean     n std_err .config        
+  &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;          
+1 rmse    standard    938.    10    56.2 pre0_mod0_post0
+2 rsq     standard    NaN      0    NA   pre0_mod0_post0</code></pre>
+</div>
+</div>
+<p>Null model is now at 938, similar but slightly different second model is still at 2003 First model is now at 684. Similar, but slightly different to the other random seed.</p>
+<section id="this-section-added-by-rebecca-basta" class="level1">
+<h1>This section added by Rebecca Basta</h1>
+</section>
+<section id="null-model-predictions" class="level1">
+<h1>Null Model Predictions</h1>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a>plot_null <span class="ot">&lt;-</span> <span class="fu">predict</span>(NM_fit, train) <span class="sc">%&gt;%</span></span>
+<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_cols</span>(train <span class="sc">%&gt;%</span> <span class="fu">select</span>(Y)) <span class="sc">%&gt;%</span></span>
+<span id="cb110-3"><a href="#cb110-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">model =</span> <span class="st">"Null model"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="dose-model-predictions" class="level1">
+<h1>Dose Model Predictions</h1>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a>plot_mod1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_fit5, train) <span class="sc">%&gt;%</span></span>
+<span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_cols</span>(train <span class="sc">%&gt;%</span> <span class="fu">select</span>(Y)) <span class="sc">%&gt;%</span></span>
+<span id="cb111-3"><a href="#cb111-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">model =</span> <span class="st">"Dose only"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="all-predictor-model-predictions" class="level1">
+<h1>All Predictor Model Predictions</h1>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a>plot_mod2 <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_fit6, train) <span class="sc">%&gt;%</span></span>
+<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_cols</span>(train <span class="sc">%&gt;%</span> <span class="fu">select</span>(Y)) <span class="sc">%&gt;%</span></span>
+<span id="cb112-3"><a href="#cb112-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">model =</span> <span class="st">"All predictors"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in predict.lm(object = object$fit, newdata = new_data, type =
+"response", : prediction from rank-deficient fit; consider predict(.,
+rankdeficient="NA")</code></pre>
+</div>
+</div>
+</section>
+<section id="combine-into-one-dataframe" class="level1">
+<h1>Combine into One Dataframe</h1>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a>plot_df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(plot_null, plot_mod1, plot_mod2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="predicted-vs-observed-plot" class="level1">
+<h1>Predicted vs Observed Plot</h1>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a>p_pred_obs <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(plot_df, <span class="fu">aes</span>(<span class="at">x =</span> Y, <span class="at">y =</span> .pred, <span class="at">color =</span> model, <span class="at">shape =</span> model)) <span class="sc">+</span></span>
+<span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb115-3"><a href="#cb115-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb115-4"><a href="#cb115-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5000</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5000</span>)) <span class="sc">+</span></span>
+<span id="cb115-5"><a href="#cb115-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb115-6"><a href="#cb115-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Observed values"</span>,</span>
+<span id="cb115-7"><a href="#cb115-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Predicted values"</span>,</span>
+<span id="cb115-8"><a href="#cb115-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Predicted vs observed values for 3 training-set models"</span></span>
+<span id="cb115-9"><a href="#cb115-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb115-10"><a href="#cb115-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb115-11"><a href="#cb115-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-12"><a href="#cb115-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(p_pred_obs)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="fitting-exercise_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
