@@ -350,3 +350,18 @@ ggplot() +
 ```
 
 The black points represent the original model predictions, and most of the points lie close to the 45° line, this indicates that there is not much variability between observed and predicted values. The blue points represent the median predictions from the bootstrap samples, they overlap with the original predictions. This overlap shows that the model is consistent across resampled datasets. The red vertical lines indicate the 89% confidence intervals, which are small for most individuals demonstrating low uncertainty, but are bigger for a few individuals. The pattern shows that the model represents most of trends in the data, and the bootstrap confirms the consistency and uncertainty of the predictions.
+
+
+# Part 3
+
+Use model 2 on test data
+```{r}
+final_pred <- predict(lm_fit6, test) %>% bind_cols(test)
+met_final <- metrics(final_pred, truth = Y, estimate = .pred)
+met_final
+
+df7billion <- merge(final_pred, pred6, by="Y")
+
+final_plot <- df7billion %>% ggplot(aes(x=Y)) + geom_point(aes(y=.pred.x, color="blue")) + geom_point(aes(y=.pred.y, color="green"))
+final_plot
+```
