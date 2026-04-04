@@ -365,3 +365,9 @@ df7billion <- merge(final_pred, pred6, by="Y")
 final_plot <- df7billion %>% ggplot(aes(x=Y)) + geom_point(aes(y=.pred.x, color="blue")) + geom_point(aes(y=.pred.y, color="green"))
 final_plot
 ```
+
+Save clean data
+```{r}
+save_data_location <- here::here("ml-models-exercise","clean.rds")
+saveRDS(df7, file = save_data_location)
+```
