@@ -10,13 +10,16 @@ library(ggplot2)
 library(tidymodels)
 library(plyr)
 library(corrplot)
+library(ranger)
+library(glmnet)
 ```
 
 Then to load data and set seed
 ```{r}
 data_location <- here::here("ml-models-exercise", "clean.rds")
 df <- readRDS(data_location)
-set.seed(1234)
+rngseed <- 1234
+set.seed(rngseed)
 ```
 
 Change race 7 and 88 to category 3
@@ -40,3 +43,45 @@ The formula I found is weight(kg)/height(m)^2
 df1 <- df %>% mutate(BMI = WT/(HT*HT))
 ```
 
+Create 3 models using all variables
+1. linear
+2. Lasso
+3. random forest
+Make predictions for entire data set
+Make observed vs. predicted plots
+```{r}
+lm_mod1 <- linear_reg()
+lm_fit1 <- lm_mod1 %>% fit(Y ~ DOSE * AGE * SEX * WT * HT * RACE, data = df1)
+
+ls_mod1 <- linear_reg(penalty = .1) %>% set_engine("glmnet")
+ls_fit1 <- ls_mod1 %>% fit(Y ~ DOSE * AGE * SEX * WT * HT * RACE, data = df1)
+
+rf_mod1 <- rand_forest(trees = 1000) %>% set_engine("ranger", seed = rngseed) %>% set_mode("regression")
+rf_fit1 <- rf_mod1 %>% fit(Y ~ DOSE * AGE * SEX * WT * HT * RACE, data = df1)
+
+lm_fit1
+ls_fit1
+rf_fit1
+
+lm_pred1 <- predict(lm_fit1, df1) %>% bind_cols(df1)
+lm_met1 <- metrics(lm_pred1, truth = Y, estimate = .pred)
+lm_met1
+ls_pred1 <- predict(ls_fit1, df1) %>% bind_cols(df1)
+ls_met1 <- metrics(ls_pred1, truth = Y, estimate = .pred)
+ls_met1
+rf_pred1 <- predict(rf_fit1, df1) %>% bind_cols(df1)
+rf_met1 <- metrics(rf_pred1, truth = Y, estimate = .pred)
+rf_met1
+
+lm_p1 <- lm_pred1 %>% ggplot(aes(x=Y, y=.pred)) + geom_point() +ggtitle("Linear model observed vs. predicted")
+lm_p1
+ls_p1 <- ls_pred1 %>% ggplot(aes(x=Y, y=.pred)) + geom_point() +ggtitle("LASSO model observed vs. predicted")
+ls_p1
+rf_p1 <- rf_pred1 %>% ggplot(aes(x=Y, y=.pred)) + geom_point() +ggtitle("Random Forest model observed vs. predicted")
+rf_p1
+```
+
+The RMSE are as follows:
+Linear: 475
+LASSO: 517
+Random forest: 373
