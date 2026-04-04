@@ -8,6 +8,8 @@ library(here)
 library(dplyr)
 library(ggplot2)
 library(tidymodels)
+library(plyr)
+library(corrplot)
 ```
 
 Then to load data and set seed
@@ -19,5 +21,22 @@ set.seed(1234)
 
 Change race 7 and 88 to category 3
 ```{r}
-
+df$RACE <- revalue(df$RACE, c("7" = "3", "88" = "3"))
 ```
+
+Make a pairwise correlation plot for continuous variables
+```{r}
+cor_df <- df %>% select(-DOSE, -SEX, -RACE)
+cor_plot1 <- corrplot::corrplot(cor(cor_df, use = "complete.obs"), method = "number", type = "upper")
+cor_plot1
+```
+Nothing seems super correlated!
+
+Compute BMI
+I am going to assume height is in meters, and weight in kg
+Plugging random values into a calculator and converting into imperial gives me weights and heights that make sense
+The formula I found is weight(kg)/height(m)^2
+```{r}
+df1 <- df %>% mutate(BMI = WT/(HT*HT))
+```
+
