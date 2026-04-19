@@ -25,3 +25,9 @@ skim(sea_states)
 
 skim(ships)
 ```
+
+Ok so there's a lot here. I need to find a reasonable question to ask
+
+```{r}
+
+```
