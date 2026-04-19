@@ -1,9 +1,27 @@
-
-
+---
+title: "Tidy Tuesday"
+---
+This cell loads packages and the required files
 ```{r}
+library(dplyr)
+library(ggplot2)
+library(tidymodels)
 library(readr)
+library(skimr)
 beaufort_scale <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-04-14/beaufort_scale.csv')
 birds <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-04-14/birds.csv')
 sea_states <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-04-14/sea_states.csv')
 ships <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-04-14/ships.csv')
+```
+
+Now I want to look at these files, it seems like there's four of them
+
+```{r}
+skim(beaufort_scale)
+
+skim(birds)
+
+skim(sea_states)
+
+skim(ships)
 ```
