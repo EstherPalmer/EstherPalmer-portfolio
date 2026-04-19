@@ -55,7 +55,33 @@ df <- whole %>% select(bird_observation_id, record_id, accompanying, n_accompany
 #get rid of anything where it is unclear if accompanying ship
 df <- df %>% drop_na(accompanying)
 
-#drop values where accompanying = true, n_accompanying = NA
+#drop rows where accompanying = true, n_accompanying = NA
+df2 <- df %>% dplyr::filter(accompanying == TRUE & is.na(n_accompanying))
+df3 <- dplyr::anti_join(df, df2, by = "bird_observation_id")
 
 #make 0 values where accompanying = False n_accompanying = NA
+df3$n_accompanying <- replace_na(df3$n_accompanying, 0)
+
+#I also need to remove any where accompanying == TRUE and n_accompanying = 0
+df4 <- df3 %>% dplyr::filter(accompanying == TRUE & n_accompanying == 0)
+df5 <- dplyr::anti_join(df3, df4, by = "bird_observation_id")
+
+#There are a lot of 0s and I want to be able to look at things without being overwhelmed by them so I will make another df excluding them
+df6 <- df5 %>% filter(accompanying == TRUE)
+df7 <- df5 %>% filter(accompanying == FALSE)
+summary(df6)
+summary(df7)
+#This shows that accompanying now matches n_accompanying correctly
+```
+
+Now I want to do some EDA for n_accomanying
+```{r}
+p1 <- ggplot(df6, aes(x=n_accompanying)) + geom_histogram()
+p1
+#This looks like I have some outliers in my data, they could be real, esp if you have really large flocks of birds. But it does make things a little difficult to see. For simplicities sake I will remove everything over 250 birds. No idea if this is correct or not
+
+df8 <- df5 %>% filter(n_accompanying < 250)
+df6 <- df8 %>% filter(accompanying == TRUE)
+
+
 ```
