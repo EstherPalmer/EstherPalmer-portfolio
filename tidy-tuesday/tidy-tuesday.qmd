@@ -26,8 +26,27 @@ skim(sea_states)
 skim(ships)
 ```
 
-Ok so there's a lot here. I need to find a reasonable question to ask
+Ok so there's a lot here. I need to find a reasonable question to ask. I am trying to figure out if there is any overlap in variables between the datasets. For example it would be interesting to see if like one bird was seen more often on windy days or something.
+I think the record_id variable is an overlap between the birds and the ships
+according to the github it is and also: record_id 1184009, bird_observation_id 974 has no corresponding ship id
+Meanwhile the other two datasets are just scales that can maybe help interpret the data.
+
+First to clean the data: birds and ships have several variables that have so much missing data that they're useless so I want to remove them
+```{r}
+birds2 <- birds %>% dplyr::select(-wan_plumage_phase, -plumage_phase, -sex, - moulting, -age)
+ships2 <- ships %>% dplyr::select(-direction, -wind_direction, -air_temperature, -pressure, -sea_surface_temperature, -depth)
+
+skim(birds2)
+skim(ships2)
+```
+
+I like birds. I want to know under which weather conditions I am most likely to get birds accompanying my ship.
+I will use n_accompanying as my outcome variable and weather conditions measured by the ships as the predictors.
+
+First I need to do more cleaning. There are a lot of NA's in this data. I am going to use the logical variable, accompanying to help determine what to keep. If accompanying = FALSE and n_accompanying = NA then I will set n_accompanying to 0. If accompanying = NA, or accompanying = TRUE and n_accompanying = NA, then I will remove the datapoint. I can't tell if under the first circumstance there were no accompanying, or if they forgot to check. Meanwhile under the second I can't tell how many, so I will remove it.
 
 ```{r}
+bdf <- birds2 %>% select(bird_observation_id, record_id, accompanying, n_accompanying)
+bdf <- bdf %>% drop_na(accompanying)
 
 ```
