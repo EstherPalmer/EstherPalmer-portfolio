@@ -46,7 +46,16 @@ I will use n_accompanying as my outcome variable and weather conditions measured
 First I need to do more cleaning. There are a lot of NA's in this data. I am going to use the logical variable, accompanying to help determine what to keep. If accompanying = FALSE and n_accompanying = NA then I will set n_accompanying to 0. If accompanying = NA, or accompanying = TRUE and n_accompanying = NA, then I will remove the datapoint. I can't tell if under the first circumstance there were no accompanying, or if they forgot to check. Meanwhile under the second I can't tell how many, so I will remove it.
 
 ```{r}
-bdf <- birds2 %>% select(bird_observation_id, record_id, accompanying, n_accompanying)
-bdf <- bdf %>% drop_na(accompanying)
+whole <- merge(birds2, ships2, by="record_id")
+#merge the data all together!
 
+#select my dataset
+df <- whole %>% select(bird_observation_id, record_id, accompanying, n_accompanying, speed, cloud_cover, precipitation, wind_speed_class, sea_state_class, season)
+
+#get rid of anything where it is unclear if accompanying ship
+df <- df %>% drop_na(accompanying)
+
+#drop values where accompanying = true, n_accompanying = NA
+
+#make 0 values where accompanying = False n_accompanying = NA
 ```
