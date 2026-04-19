@@ -8,6 +8,7 @@ library(ggplot2)
 library(tidymodels)
 library(readr)
 library(skimr)
+library(forcats) #for collapsing factors
 beaufort_scale <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-04-14/beaufort_scale.csv')
 birds <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-04-14/birds.csv')
 sea_states <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-04-14/sea_states.csv')
@@ -81,7 +82,28 @@ p1
 #This looks like I have some outliers in my data, they could be real, esp if you have really large flocks of birds. But it does make things a little difficult to see. For simplicities sake I will remove everything over 250 birds. No idea if this is correct or not
 
 df8 <- df5 %>% filter(n_accompanying < 250)
-df6 <- df8 %>% filter(accompanying == TRUE)
+summary(df8)
+#it looks like some things that should be categorical are strings
 
+df8$season <- as.factor(df8$season)
+df8$cloud_cover <- as.factor(df8$cloud_cover)
+df8$precipitation <- as.factor(df8$precipitation)
+
+#it seems like for precipitation, we can get rid of some of the NA's by looking at cloud cover. 
+#If cloud cover = clear we can assume there is none precipitaion
+df9 <- df8 %>% dplyr::filter(cloud_cover == "clear" & is.na(precipitation))
+df9$precipitation <- replace_na(df9$precipitation, "none")
+df10 <- rows_update(df8, df9, by = "bird_observation_id")
+
+#I want to combine some of the precipitation levels for simplicities sake
+#Specifically into: none, rain, snow, other
+
+df10$precipitation <- fct_collapse(df10$precipitation, rain = c("rain", "showers", "squalls", "drizzle"), snow = c("snow showers", "continuous snow"))
+summary(df10)
+#data looks pretty good I think!
+```
+
+Actual EDA time!
+```{r}
 
 ```
