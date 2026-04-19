@@ -101,9 +101,27 @@ df10 <- rows_update(df8, df9, by = "bird_observation_id")
 df10$precipitation <- fct_collapse(df10$precipitation, rain = c("rain", "showers", "squalls", "drizzle"), snow = c("snow showers", "continuous snow"))
 summary(df10)
 #data looks pretty good I think!
+
+df6 <- df10 %>% filter(accompanying == TRUE)
 ```
 
 Actual EDA time!
 ```{r}
+p2 <- df6 %>% ggplot(aes(x=speed, y=n_accompanying)) + geom_point()
+p2
 
+p3 <- df6 %>% ggplot(aes(x=wind_speed_class, y=n_accompanying)) + geom_point()
+p3
+
+p4 <- df6 %>% ggplot(aes(x=sea_state_class, y=n_accompanying)) + geom_point()
+p4
+
+p5 <- df6 %>% ggplot(aes(x=cloud_cover, y=n_accompanying)) + geom_boxplot()
+p5
+
+p6 <- df6 %>% ggplot(aes(x=precipitation, y=n_accompanying)) + geom_boxplot()
+p6
 ```
+
+Looks like theres more birds maybe when there's less precipitation
+Also sea state might be a thing
