@@ -125,3 +125,36 @@ p6
 
 Looks like theres more birds maybe when there's less precipitation
 Also sea state might be a thing
+
+Now time to get modeling
+My three model types will be:
+Generalized linear model
+Random Forest model
+?
+
+To start I will split the data and set a seed
+```{r}
+
+```
+
+Here is my linear model
+```{r}
+
+```
+
+Here is my random forest model
+```{r}
+
+```
+
+Here is my X model
+```{r}
+
+```
+
+I plan to choose the XXXX as my model because.....
+
+Here I will use my test data and evaluate it
+```{r}
+
+```
