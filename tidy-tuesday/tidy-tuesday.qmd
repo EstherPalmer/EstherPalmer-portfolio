@@ -9,6 +9,7 @@ library(tidymodels)
 library(readr)
 library(skimr)
 library(forcats) #for collapsing factors
+library(ranger)
 beaufort_scale <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-04-14/beaufort_scale.csv')
 birds <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-04-14/birds.csv')
 sea_states <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-04-14/sea_states.csv')
@@ -121,6 +122,7 @@ p5
 
 p6 <- df6 %>% ggplot(aes(x=precipitation, y=n_accompanying)) + geom_boxplot()
 p6
+
 ```
 
 Looks like theres more birds maybe when there's less precipitation
@@ -134,13 +136,43 @@ Random Forest model
 
 To start I will split the data and set a seed
 ```{r}
+rngseed <- 1234
+set.seed(rngseed)
 
+data_split  <- initial_split(df10, prop = 3/4)
+
+train <- training(data_split)
+test <- testing(data_split)
 ```
 
 Here is my linear model
 ```{r}
+set.seed(rngseed)
+lm_mod <- linear_reg()
+
+folds <- vfold_cv(train, v = 10)
+folds
+
+lm_wf1 <- workflow() %>% add_model(lm_mod) %>% add_formula(n_accompanying ~ speed * cloud_cover * precipitation * wind_speed_class * sea_state_class * season)
+lm_fit_cv1 <- lm_wf1 %>% fit_resamples(folds, control = control_resamples(save_pred = TRUE))
+lm_fit_cv1
+collect_metrics(lm_fit_cv1)
+
+lm_pred1 <- collect_predictions(lm_fit_cv1)
+
+lm_p1 <- lm_pred1 %>% ggplot(aes(x=n_accompanying, y=.pred)) + geom_point()
+lm_p1
+
+lm_p2 <- lm_pred1 %>% ggplot(aes(x=n_accompanying, y=.pred)) + geom_point() + coord_cartesian(xlim = c(0, 50))
+lm_p2
 
 ```
+
+Got some warnings that I may need to figure out, I think it may be something about correlated data?
+Ok so it's really hard to see the plot given how most are between like 1-20 but the plot goes out to 150.
+So I made a second plot that's slightly more zoomed in.
+This doesn't look great still though. Very not a line.
+
 
 Here is my random forest model
 ```{r}
