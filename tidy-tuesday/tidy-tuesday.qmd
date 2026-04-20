@@ -164,10 +164,6 @@ lm_pred1 <- collect_predictions(lm_fit_cv1)
 
 lm_p1 <- lm_pred1 %>% ggplot(aes(x=n_accompanying, y=.pred)) + geom_point()
 lm_p1
-
-lm_p2 <- lm_pred1 %>% ggplot(aes(x=n_accompanying, y=.pred)) + geom_point() + coord_cartesian(xlim = c(0, 75))
-lm_p2
-
 ```
 
 Got some warnings that I may need to figure out, I think it may be something about correlated data?
@@ -188,10 +184,6 @@ rf_pred1 <- collect_predictions(rf_fit_cv1)
 
 rf_p1 <- rf_pred1 %>% ggplot(aes(x=n_accompanying, y=.pred)) + geom_point()
 rf_p1
-
-rf_p2 <- rf_pred1 %>% ggplot(aes(x=n_accompanying, y=.pred)) + geom_point() + coord_cartesian(xlim = c(0, 75))
-rf_p2
-
 ```
 
 Perhaps the issue is that there are so many 0 observations. I know the person who's doing the modeling for one of my current papers had special models that are designed to deal with 0 heavy datasets. I don't want to get rid of them but maybe one of those models would be helpful.
@@ -203,7 +195,7 @@ Here is my zero inflated model
 zf_mod <- poisson_reg() %>% set_engine("zeroinfl")
 
 zf_wf1 <- workflow() %>% add_model(zf_mod) %>% add_formula(n_accompanying ~ speed + cloud_cover + precipitation + wind_speed_class + sea_state_class + season)
-zf_fit_cv1 <- zf_wf1 %>% fit_resamples(folds, control = control_resamples(save_pred = TRUE))
+zf_fit_cv1 <- zf_wf1 %>% fit_resamples(folds, control = control_resamples(save_pred = TRUE, save_workflow = TRUE))
 zf_fit_cv1
 collect_metrics(zf_fit_cv1)
 
@@ -211,9 +203,6 @@ zf_pred1 <- collect_predictions(zf_fit_cv1)
 
 zf_p1 <- rf_pred1 %>% ggplot(aes(x=n_accompanying, y=.pred)) + geom_point()
 zf_p1
-
-zf_p2 <- rf_pred1 %>% ggplot(aes(x=n_accompanying, y=.pred)) + geom_point() + coord_cartesian(xlim = c(0, 75))
-zf_p2
 ```
 
 This still looks not great.
@@ -222,5 +211,13 @@ I think I will continue to use the zero inflated model, because while all the me
 
 Here I will use my test data and evaluate it
 ```{r}
+zf_best_fit <- fit_best(zf_fit_cv1)
+test_pred <- predict(zf_best_fit, test) %>% bind_cols(test)
+test_met <- metrics(test_pred, truth = n_accompanying, estimate = .pred)
+test_met
 
+zf_p3 <- test_pred %>% ggplot(aes(x=n_accompanying, y=.pred)) + geom_point()
+zf_p3
 ```
+
+This one predicted too few zeros
