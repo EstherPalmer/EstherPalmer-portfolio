@@ -9,7 +9,9 @@ library(tidymodels)
 library(readr)
 library(skimr)
 library(forcats) #for collapsing factors
-library(ranger)
+library(ranger) #for random forest
+library(poissonreg) #for the zeroinflated model
+library(pscl) #said it was required
 beaufort_scale <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-04-14/beaufort_scale.csv')
 birds <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-04-14/birds.csv')
 sea_states <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-04-14/sea_states.csv')
@@ -80,9 +82,9 @@ Now I want to do some EDA for n_accomanying
 ```{r}
 p1 <- ggplot(df6, aes(x=n_accompanying)) + geom_histogram()
 p1
-#This looks like I have some outliers in my data, they could be real, esp if you have really large flocks of birds. But it does make things a little difficult to see. For simplicities sake I will remove everything over 250 birds. No idea if this is correct or not
+#This looks like I have some outliers in my data, they could be real, esp if you have really large flocks of birds. But it does make things a little difficult to see. For simplicities sake I will remove everything over 75 birds. No idea if this is correct or not
 
-df8 <- df5 %>% filter(n_accompanying < 250)
+df8 <- df5 %>% filter(n_accompanying < 75)
 summary(df8)
 #it looks like some things that should be categorical are strings
 
@@ -132,7 +134,7 @@ Now time to get modeling
 My three model types will be:
 Generalized linear model
 Random Forest model
-?
+Zero Inflated model
 
 To start I will split the data and set a seed
 ```{r}
@@ -163,7 +165,7 @@ lm_pred1 <- collect_predictions(lm_fit_cv1)
 lm_p1 <- lm_pred1 %>% ggplot(aes(x=n_accompanying, y=.pred)) + geom_point()
 lm_p1
 
-lm_p2 <- lm_pred1 %>% ggplot(aes(x=n_accompanying, y=.pred)) + geom_point() + coord_cartesian(xlim = c(0, 50))
+lm_p2 <- lm_pred1 %>% ggplot(aes(x=n_accompanying, y=.pred)) + geom_point() + coord_cartesian(xlim = c(0, 75))
 lm_p2
 
 ```
@@ -187,20 +189,36 @@ rf_pred1 <- collect_predictions(rf_fit_cv1)
 rf_p1 <- rf_pred1 %>% ggplot(aes(x=n_accompanying, y=.pred)) + geom_point()
 rf_p1
 
-rf_p2 <- rf_pred1 %>% ggplot(aes(x=n_accompanying, y=.pred)) + geom_point() + coord_cartesian(xlim = c(0, 50))
+rf_p2 <- rf_pred1 %>% ggplot(aes(x=n_accompanying, y=.pred)) + geom_point() + coord_cartesian(xlim = c(0, 75))
 rf_p2
 
 ```
 
 Perhaps the issue is that there are so many 0 observations. I know the person who's doing the modeling for one of my current papers had special models that are designed to deal with 0 heavy datasets. I don't want to get rid of them but maybe one of those models would be helpful.
+After looking it up it looks like they are called zero inflated models
+I could also just use the dataset where accompanying = TRUE.
 
-
-Here is my X model
+Here is my zero inflated model
 ```{r}
+zf_mod <- poisson_reg() %>% set_engine("zeroinfl")
 
+zf_wf1 <- workflow() %>% add_model(zf_mod) %>% add_formula(n_accompanying ~ speed + cloud_cover + precipitation + wind_speed_class + sea_state_class + season)
+zf_fit_cv1 <- zf_wf1 %>% fit_resamples(folds, control = control_resamples(save_pred = TRUE))
+zf_fit_cv1
+collect_metrics(zf_fit_cv1)
+
+zf_pred1 <- collect_predictions(zf_fit_cv1)
+
+zf_p1 <- rf_pred1 %>% ggplot(aes(x=n_accompanying, y=.pred)) + geom_point()
+zf_p1
+
+zf_p2 <- rf_pred1 %>% ggplot(aes(x=n_accompanying, y=.pred)) + geom_point() + coord_cartesian(xlim = c(0, 75))
+zf_p2
 ```
 
-I plan to choose the XXXX as my model because.....
+This still looks not great.
+
+I think I will continue to use the zero inflated model, because while all the metrics are the same for all models, this one looks like it might capture maybe the most variation?
 
 Here I will use my test data and evaluate it
 ```{r}
