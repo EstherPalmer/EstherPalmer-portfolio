@@ -176,8 +176,24 @@ This doesn't look great still though. Very not a line.
 
 Here is my random forest model
 ```{r}
+rf_mod1 <- rand_forest(trees = 1000) %>% set_engine("ranger", seed = rngseed) %>% set_mode("regression")
+rf_wf1 <- workflow() %>% add_model(rf_mod1) %>% add_formula(n_accompanying ~ speed + cloud_cover + precipitation + wind_speed_class + sea_state_class + season)
+rf_fit_cv1 <- rf_wf1 %>% fit_resamples(folds, control = control_resamples(save_pred = TRUE))
+rf_fit_cv1
+collect_metrics(rf_fit_cv1)
+
+rf_pred1 <- collect_predictions(rf_fit_cv1)
+
+rf_p1 <- rf_pred1 %>% ggplot(aes(x=n_accompanying, y=.pred)) + geom_point()
+rf_p1
+
+rf_p2 <- rf_pred1 %>% ggplot(aes(x=n_accompanying, y=.pred)) + geom_point() + coord_cartesian(xlim = c(0, 50))
+rf_p2
 
 ```
+
+Perhaps the issue is that there are so many 0 observations. I know the person who's doing the modeling for one of my current papers had special models that are designed to deal with 0 heavy datasets. I don't want to get rid of them but maybe one of those models would be helpful.
+
 
 Here is my X model
 ```{r}
