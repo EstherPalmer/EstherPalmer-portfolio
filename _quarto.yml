@@ -23,9 +23,9 @@ website:
           - text: "Fitting Exercise"
             file: fitting-exercise/fitting-exercise.qmd
           - text: "ml-models-exercise"
-            file: ml-models-exercise.qmd
+            file: ml-models-exercise\ml-models-exercise.qmd
           - text: "Tidy Tuesday"
-            file: tidy-tuesday.qmd
+            file: tidy-tuesday\tidy-tuesday.qmd
     right:
       - icon: github 
         href: https://github.com/EstherPalmer/EstherPalmer-portfolio        
